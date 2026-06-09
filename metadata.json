@@ -1,0 +1,6 @@
+{
+  "name": "Auron",
+  "description": "AI-powered voice digit recognition applet with high precision.",
+  "requestFramePermissions": ["microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
