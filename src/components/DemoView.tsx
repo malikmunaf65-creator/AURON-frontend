@@ -34,7 +34,7 @@ export default function DemoView({ onAddHistory, voiceSettings, appLanguage = "E
     setConsoleLog(`Triggering sample phonetic vocalization: DIGIT ${digit} - ${subtitle}`);
 
     const config = GREEK_ALPHABET[digit];
-    const speechText = `${digit}, ${subtitle}`;
+    const speechText = `${subtitle}`;
 
     // Update history for prediction simulations
     const newRecord: DigitHistory = {
