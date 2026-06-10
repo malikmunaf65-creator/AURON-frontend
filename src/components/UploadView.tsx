@@ -165,15 +165,16 @@ clearTimeout(timeout);
 setIsUploading(false);
 onAddHistory(newRecord);
 onNavigate("results");
-       } catch (err: any) {
+      } catch (err: any) {
   console.error("Ingestion recognition mistake:", err);
   if (err.name === 'AbortError') {
     setErrorText("Request timed out — try a shorter audio file.");
   } else {
     setErrorText(`Analysis failed: ${err.message}`);
   }
-  setIsUploading(false);
   playErrorSfx();
+} finally {
+  setIsUploading(false);
 }
     } catch (err: any) {
       console.error(err);
