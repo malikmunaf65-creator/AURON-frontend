@@ -157,6 +157,7 @@ export default function UploadView({ onNavigate, onAddHistory, userProfile, appL
 
           playSuccessSfx();
           // Always show results regardless of login status
+setIsUploading(false);
 onAddHistory(newRecord);
 onNavigate("results");
         } catch (err: any) {
