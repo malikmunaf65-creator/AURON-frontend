@@ -265,8 +265,11 @@ app.post("/api/recognize", async (req, res) => {
       return res.status(400).json({ error: "Missing 'audio' base64 payload." });
     }
 
-    // ✅ TRY PYTHON RAILWAY BACKEND FIRST (real TensorFlow model)
-    const pythonBackend = process.env.PYTHON_BACKEND_URL;
+   // ✅ TRY GEMINI FIRST (more accurate for diverse audio)
+    const ai = getGeminiClient();
+if (ai) {
+  // ... gemini code runs first
+}
     if (pythonBackend) {
       try {
         console.log("Routing to Python Railway backend for real ML prediction...");
@@ -291,8 +294,8 @@ app.post("/api/recognize", async (req, res) => {
     }
     
 
-    // ✅ FALLBACK: GEMINI AI RECOGNITION
-    const ai = getGeminiClient();
+   // ✅ FALLBACK: PYTHON MODEL
+const pythonBackend = process.env.PYTHON_BACKEND_URL;
 
     if (!ai) {
       console.log("Mock prediction — no Gemini key configured");
