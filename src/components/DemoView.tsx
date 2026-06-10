@@ -80,10 +80,11 @@ export default function DemoView({ onAddHistory, voiceSettings, appLanguage = "E
         const audioSrc = `data:audio/wav;base64,${json.audio}`;
         const audio = new Audio(audioSrc);
         audio.playbackRate = isAlt ? (rate * 1.25) : rate;
-        audio.play().catch(() => {
-          // fallback to offline speech if autoplay fails
-          speakTextOffline(speechText, voiceSettings.ttsVoice);
-        });
+        audio.play().then(() => {
+  // TTS API worked fine
+}).catch(() => {
+  speakTextOffline(subtitle, voiceSettings.ttsVoice);
+});
         setConsoleLog(isAlt ? `Alternative AI Synth '${voiceSettings.ttsVoice}' broadcast successful.` : `Gemini TTS '${voiceSettings.ttsVoice}' synthesized successfully.`);
       } catch (err) {
         console.warn("TTS API Endpoint failed, falling back to local speech engine.");
