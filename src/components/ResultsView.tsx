@@ -90,7 +90,7 @@ export default function ResultsView({ history, onClearHistory, voiceSettings, ap
         speakActiveDigit(voiceSettings?.ttsVoice || "Aetheria");
       }
     }
-  }, [activeItem, voiceSettings]);
+  }, [activeItem]);
 
   const handleSelect = (item: DigitHistory) => {
     playClickSfx();
