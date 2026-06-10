@@ -165,14 +165,16 @@ clearTimeout(timeout);
 setIsUploading(false);
 onAddHistory(newRecord);
 onNavigate("results");
-        } catch (err: any) {
-          console.error("Ingestion recognition mistake:", err);
-          setErrorText("AI analysis failed. Check your API configurations.");
-          playErrorSfx();
-        } finally {
-          setIsUploading(false);
-        }
-      };
+       } catch (err: any) {
+  console.error("Ingestion recognition mistake:", err);
+  if (err.name === 'AbortError') {
+    setErrorText("Request timed out — try a shorter audio file.");
+  } else {
+    setErrorText(`Analysis failed: ${err.message}`);
+  }
+  setIsUploading(false);
+  playErrorSfx();
+}
     } catch (err: any) {
       console.error(err);
       setErrorText("Failed to read files. Secure isolated environment.");
