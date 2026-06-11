@@ -124,8 +124,7 @@ export default function UploadView({ onNavigate, onAddHistory, userProfile, appL
           const base64Payload = base64Data.split(",")[1];
 
          const controller = new AbortController();
-const timeout = setTimeout(() => controller.abort(), 45000);
-
+const timeout = setTimeout(() => controller.abort(), 120000);
 const response = await fetch("/api/recognize", {
   method: "POST",
   headers: { "Content-Type": "application/json" },
